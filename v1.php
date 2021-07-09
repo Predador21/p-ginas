@@ -1,18 +1,23 @@
 <?php
 
-$dbname     = "fenix";
-$username   = "admin";
-$password   = "qwerty794613Q!";
+include 'config.php';
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$cookie=$_COOKIE['session'];
 
-$session = 'g'.bin2hex(random_bytes(3));
+if (is_null($cookie) == 1) {
+    $cookie=bin2hex(random_bytes(5));
+    setcookie('session',$cookie);
+}
 
-$sql = "insert into tbl_session ( session ) values ( '".$session."')";
+$conn = new mysqli($host, $username, $password, $database);
+
+$account='g'.bin2hex(random_bytes(3));
+
+$sql = "insert into tbl_session ( session, account ) values ('".$cookie."','".$account."')";
 $result = $conn->query($sql);
 
 $conn->close();
 
-echo "Usuario: "."<br>".$session;
+echo "Usuario: ".$account;
 
 ?>
