@@ -13,7 +13,7 @@ $conn = new mysqli($host, $username, $password, $database);
 
 $account='g'.bin2hex(random_bytes(3));
 
-$sql = "insert into tbl_session ( session, account ) values ('".$cookie."','".$account."')";
+$sql = "insert into tbl_session ( session, account, status ) values ('".$cookie."','".$account."',1)";
 $result = $conn->query($sql);
 
 echo "Usuario: ".$account;
