@@ -13,9 +13,12 @@ include 'config.php';
 $cookie=$_COOKIE['session'];
 
 if (is_null($cookie) == 1) {
-    $cookie=bin2hex(random_bytes(5));
+    $cookie='fenix_'.bin2hex(random_bytes(5));
     setcookie('session',$cookie);
 }
+
+echo "Session: ".$cookie ;
+echo "<BR><BR>";
 
 $conn = new mysqli($host, $username, $password, $database);
 
@@ -23,14 +26,14 @@ $account='g'.bin2hex(random_bytes(3));
 
 setcookie('account',$account);
 
-$sql = "insert into tbl_session ( session, account, status ) values ('".$cookie."','".$account."',1)";
+$sql = "insert into tbl_session ( session, account, status ) values ('".$cookie."','".$account."',1)"; //STATUS 1 = SEM TMUX
 $result = $conn->query($sql);
 
 echo "Usuario: ".$account;
 echo "<BR><BR>" ;
 
 $conn->close();
-
+    
 //-------------------------------------------
 
 $conn = new mysqli($host, $username, $password, $database);
@@ -42,7 +45,7 @@ while($result->num_rows == 0) {
     $result = $conn->query($sql);
     sleep(1) ;
 }
-$filename = 'arquivo.txt';
+
 $row = $result->fetch_assoc();
 
 $link=$row["url"] ;
@@ -67,6 +70,8 @@ function myFunction() {
 
  var session = '' ;
  var account = '' ;
+ var sender  = window.location.href;
+
 
  for(var i=0; i<cookiearray.length; i++) {
 
