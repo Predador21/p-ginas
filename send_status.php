@@ -2,9 +2,9 @@
 
 include 'config.php';
 
-$refresh = $_GET['refresh'];
-$status  = $_GET['status'];
-$owner   = $_GET['owner'];
+$refresh     = $_GET['refresh'];
+$status_new  = $_GET['status'];
+$owner       = $_GET['owner'];
 
 $data_hora = date('d/m/Y H:i:s');
 
@@ -16,13 +16,16 @@ $sql .="  from tbl_account " ;
 $sql .=" where refresh_token = '".$refresh."' " ;
 
 $result = $conn->query($sql);
-$row = $result->fetch_assoc();
+$row    = $result->fetch_assoc();
 
-$status_old=$row["status"] ;
-$d_status_first=$row["d_status_first"] ;
+$status_old     =$row["status"] ;
+$d_status_first =$row["d_status_first"] ;
 
-if ($status_old != $status ) {
+if ($status_old != $status_new && $status_new != 'STARTING') {
+    $status=$status_new ;
     $d_status_first=$data_hora ;
+} else {
+       $status=$status_old ;
 }
 
 $sql  ="update tbl_account " ;
