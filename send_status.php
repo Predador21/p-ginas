@@ -33,6 +33,7 @@ $sql .="   set status = '".$status."' " ;
 $sql .="      ,d_status_first = '".$d_status_first."' " ;
 $sql .="      ,d_status_last = '".$data_hora."' ";
 $sql .="      ,owner = '".$owner."' ";
+$sql .="      ,status_old = '".$status_old."' " ;
 $sql .=" where refresh_token = '".$refresh."' " ;
 
 $result = $conn->query($sql);
