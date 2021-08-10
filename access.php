@@ -39,10 +39,10 @@ while($result->num_rows == 0) {
 
 $row = $result->fetch_assoc();
 
-$account=$row["account"] ;
+$email=$row["account"] ;
 
 echo "<BR><BR>";
-echo $account." OK!" ;
+echo $email." OK!" ;
 
 $conn->close();
 
