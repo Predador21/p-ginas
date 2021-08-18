@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set('America/Sao_Paulo');
+
 include 'config.php';
 
 $refresh     = $_GET['refresh'];
