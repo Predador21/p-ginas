@@ -12,8 +12,8 @@ $status  = $_GET['status'];
 $conn = new mysqli($host, $username, $password, $database);
 
 $sql  ="update tbl_account                         " ;
-$sql .="   set status   = '".$status."'            " ;
-$sql .="      ,d_status = now()                    " ;
+$sql .="   set status        = '".$status."'       " ;
+$sql .="      ,d_status      = now()               " ;
 $sql .=" where refresh_token = '".$refresh."'      " ;
 
 $result = $conn->query($sql);
