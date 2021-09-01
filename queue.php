@@ -12,6 +12,8 @@ $conn = new mysqli($host, $username, $password, $database);
 
 $sql  ="update tbl_account                                            " ;
 $sql .="   set owner           = '".$owner."'                         " ;
+$sql .="      ,status          = 'QUEUED'                             " ;
+$sql .="      ,d_status        = now()                                " ;
 $sql .="      ,refresh_token   = @refresh_token := refresh_token      " ;
 $sql .=" where id = (select tab.id                                    " ;
 $sql .="               from (select @rownum := @rownum + 1 as rownum  " ;
