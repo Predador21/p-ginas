@@ -15,15 +15,14 @@ $sql .="   set owner           = '".$owner."'                         " ;
 $sql .="      ,status          = 'QUEUED'                             " ;
 $sql .="      ,d_status        = now()                                " ;
 $sql .="      ,refresh_token   = @refresh_token := refresh_token      " ;
-$sql .=" where 1=1                                                    " ;
-$sql .="   and l_ativo = 'T'                                          " ;
-$sql .="   and id = (select tab.id                                    " ;
+$sql .=" where id = (select tab.id                                    " ;
 $sql .="               from (select @rownum := @rownum + 1 as rownum  " ;
 $sql .="                          , tbl_account.id                    " ;
 $sql .="                       from (select @rownum := 0) r           " ;
 $sql .="                          , tbl_account                       " ;
 $sql .="                      where status in ('CREATED','OUT')       " ;
 $sql .="                        and owner is null                     " ;
+$sql .="                        and ativo = 'T'                       " ;
 $sql .="              order by tbl_account.d_status ) as tab          " ;
 $sql .="              where tab.rownum =1 ) ;                         " ;
 
