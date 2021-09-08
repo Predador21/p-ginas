@@ -7,6 +7,8 @@ include 'config.php';
 $account = $_GET['account'] ;
 $version = $_GET['version'] ;
 
+$account = str_replace("_", ".", $account) ;
+
 $account = $account.'@gmail.com' ;
 
 $conn = new mysqli($host, $username, $password, $database);
