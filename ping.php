@@ -1,27 +1,22 @@
 <?php
 
-$user = "" ;
-$send = "" ;
-$target = "" ;
+date_default_timezone_set('America/Sao_Paulo');
 
-if ( isset( $_GET['user'] ) ) {
+include 'config.php';
 
-$user = $_GET['user'];
-$send = $_GET['send'];
-$target = $_GET['target'];
+$account = $_GET['account'] ;
+$version = $_GET['version'] ;
 
-$servername = "localhost";
-$dbname     = "fenix";
-$username   = "admin";
-$password   = "qwerty794613Q!";
+$account = $account.'@gmail.com' ;
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($host, $username, $password, $database);
 
-$sql = "insert into tbl_ping ( user , send , target ) values ( '".$user."', '".$send."', '".$target."')";
+$sql  ="update tbl_account                 " ;
+$sql .="   set d_ping  = now()             " ;
+$sql .="     , version = '".$version."'    " ;
+$sql .=" where account = '".$account."'    " ;
+
 $result = $conn->query($sql);
 
 $conn->close();
-
-}
-
 ?>
