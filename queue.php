@@ -24,7 +24,8 @@ $sql .="                          , tbl_account                       " ;
 $sql .="                      where 1=1                               " ;
 $sql .="                        and status not in ('TOS_VIOLATION')   " ;
 $sql .="                        and ativo = 'T'                       " ;
-$sql .="              order by tbl_account.d_status ) as tab          " ;
+$sql .="              order by tbl_account.d_status                   " ;
+$sql .="                     , tbl_account.id ) as tab                " ;
 $sql .="              where tab.rownum =1 ) ;                         " ;
 
 $result = $conn->query($sql);
