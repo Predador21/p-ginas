@@ -23,6 +23,7 @@ $sql .="                       from (select @rownum := 0) r           " ;
 $sql .="                          , tbl_account                       " ;
 $sql .="                      where 1=1                               " ;
 $sql .="                        and status not in ('TOS_VIOLATION')   " ;
+$sql .="                        and status not in ('BUILDING')        " ;
 $sql .="                        and ativo = 'T'                       " ;
 $sql .="              order by tbl_account.d_status                   " ;
 $sql .="                     , tbl_account.id ) as tab                " ;
