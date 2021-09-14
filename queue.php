@@ -41,6 +41,7 @@ $row = $result->fetch_assoc();
 
 $account=$row["account"] ;
 $refresh_token=$row["refresh_token"] ;
+$bearer=$row["bearer"] ;
 
 $myObj = new stdClass();
 $myObj->account = $account;
