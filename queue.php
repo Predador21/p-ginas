@@ -27,6 +27,7 @@ $sql .="                        and status not in ('TOS_VIOLATION')   " ;
 $sql .="                        and status not in ('BUILDING')        " ;
 $sql .="                        and status not in ('DELAYED')         " ;
 $sql .="                        and ativo = 'T'                       " ;
+//$sql .="                        and 1=2                               " ;
 $sql .="              order by tbl_account.d_status                   " ;
 $sql .="                     , tbl_account.id ) as tab                " ;
 $sql .="              where tab.rownum =1 ) ;                         " ;
