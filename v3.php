@@ -22,7 +22,7 @@ echo "<BR><BR>";
 
 $conn = new mysqli($host, $username, $password, $database);
 
-$account='g'.bin2hex(random_bytes(3));
+$account='g'.bin2hex(random_bytes(4));
 
 setcookie('account',$account);
 
