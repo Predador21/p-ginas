@@ -3,14 +3,12 @@
 include 'config.php';
 
 $session = $_GET['session'];
-$account = $_GET['account'];
 $user    = $_GET['user'];
-$status  = $_GET['status'];
 $url     = $_GET['url'];
 
 $conn = new mysqli($host, $username, $password, $database);
 
-$sql = "insert into tbl_url (session,account,user,status,url) values ('".$session."' , '".$account."' , '".$user."' , '".$status."' , '".$url."' )" ;
+$sql = "insert into tbl_url (session , user , status , url) values ('".$session."' , '".$user."' , 1 , '".$url."' )" ;
 $result = $conn->query($sql);
 
 $sql = "update tbl_session set status = 2 where account =  '".$account."' " ;
