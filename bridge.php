@@ -21,14 +21,7 @@ $row = $result->fetch_assoc();
 $account=$row["account"] ;
 
 if ( $account == $user.'@gmail.com' ) {
-
-    $sql  ="update tbl_account                           " ;
-    $sql .="   set count_creator = count_creator + 1     " ;
-    $sql .=" where account = '".$account."' ;            " ;
-
-    $result = $conn->query($sql);
-
-    $next=$account ;
+   $next=$account ;
 }
 
 $myObj = new stdClass();
