@@ -14,6 +14,15 @@ $result = $conn->query($sql);
 $sql = "insert into tbl_account (account , refresh_token , creator) values ('".$account."' , '".$refresh."' , '".$creator."' )" ;
 $result = $conn->query($sql);
 
+$creator = $creator.'@gmail.com' ;
+
+$sql  ="update tbl_account                           " ;
+$sql .="   set count_creator = count_creator + 1     " ;
+$sql .=" where account = '".$creator."' ;            " ;
+
+$result = $conn->query($sql);
+
+
 $conn->close();
 
 ?>
