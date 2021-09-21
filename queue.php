@@ -52,7 +52,5 @@ $myJSON = json_encode($myObj);
 
 echo $myJSON;
 
-//echo $refresh_token ;
-
 $conn->close();
 ?>
