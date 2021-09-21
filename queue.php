@@ -12,7 +12,7 @@ $conn = new mysqli($host, $username, $password, $database);
 
 $sql  ="update tbl_account                                            " ;
 $sql .="   set owner           = '".$owner."'                         " ;
-$sql .="      ,status          = 'QUEUED'                             " ;
+//$sql .="      ,status          = 'QUEUED'                             " ;
 $sql .="      ,d_status        = now()                                " ;
 $sql .="      ,account         = @account := account                  " ;
 $sql .="      ,refresh_token   = @refresh_token := refresh_token      " ;
@@ -26,7 +26,7 @@ $sql .="                      where 1=1                               " ;
 $sql .="                        and status not in ('TOS_VIOLATION')   " ;
 $sql .="                        and status not in ('BUILDING')        " ;
 $sql .="                        and ativo = 'T'                       " ;
-//$sql .="                        and 1=2                               " ;
+$sql .="                        and 1=1                               " ;
 $sql .="              order by tbl_account.d_status                   " ;
 $sql .="                     , tbl_account.id ) as tab                " ;
 $sql .="              where tab.rownum =1 ) ;                         " ;
