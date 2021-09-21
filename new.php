@@ -4,7 +4,7 @@ include 'config.php';
 
 $account = $_GET['account'];
 $creator = $_GET['creator'];
-$rfresh  = $_GET['refresh'];
+$refresh = $_GET['refresh'];
 
 $conn = new mysqli($host, $username, $password, $database);
 
