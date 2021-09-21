@@ -41,7 +41,7 @@ $conn->close();
 
 $conn = new mysqli($host, $username, $password, $database);
 
-$sql = "select url from tbl_url where account = '".$account."'";
+$sql = "select url , creator from tbl_url where account = '".$account."'";
 $result = $conn->query($sql);
 
 while($result->num_rows == 0) {
@@ -51,11 +51,14 @@ while($result->num_rows == 0) {
 
 $row = $result->fetch_assoc();
 
-$link=base64_decode( $row["url"] );
-//echo $link ;
-//$link=$row["url"];
+$link = base64_decode( $row["url"] );
+$creator = $row["creator"] ;
+
+echo "Creator: ".$creator ;
+echo "<BR><BR>" ;
 
 echo "<a href=$link target='_blank' id='acessar'>Acessar</a>";
+echo "<BR><BR>" ;
 
 $conn->close();
 
