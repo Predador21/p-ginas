@@ -1,26 +1,27 @@
 <?php
-$servername = "localhost";
-$username = "admin";
-$password = "qwerty794613Q!";
-$dbname = "fenix";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
+date_default_timezone_set('America/Sao_Paulo');
 
-$sql = "SELECT id, datahora, user, send, target FROM tbl_ping";
+include 'config.php';
+
+//$data_hora = date('d/m/Y H:i:s');
+
+$conn = new mysqli($host, $username, $password, $database);
+
+$sql  = "select status ";
+$sql .= "      ,count(*) qtde               ";
+$sql .= "  from tbl_account                 ";
+$sql .= " group by status ;                 ";
+
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-  // output data of each row
   while($row = $result->fetch_assoc()) {
-    echo "id: " . $row["id"]. " data: " . $row["datahora"]. " user: " . $row["user"]. " send: " . $row["send"]. " target: " . $row["target"]. "<br>";
+        $status = $row["status"] ;
+        $qtde   = $row["qtde"] ;
+    echo str_pad($status,30 , "-").' '.$qtde."<BR>";
   }
-} else {
-  echo "0 results";
 }
 $conn->close();
+
 ?>
