@@ -8,11 +8,15 @@ $user = $_GET['user'];
 
 $conn = new mysqli($host, $username, $password, $database);
 
-$sql  ="select account               " ;
-$sql .="  from tbl_account           " ;
-$sql .=" where 1=1                   " ;
-$sql .="   and status = 'RUNNING'    " ;
-$sql .=" order by count_creator ;    " ;
+$sql  ="select account                                         " ;
+$sql .="  from tbl_account                                     " ;
+$sql .=" where 1=1                                             " ;
+$sql .="   and status = 'RUNNING'                              " ;
+$sql .="   and version is not NULL                             " ;
+$sql .="   and id < (select max(id) from tbl_account )         " ;
+//$sql .="   and d_create <= DATE_SUB(now(), interval 5 MINUTE)  " ;
+$sql .=" order by count_creator                                " ;
+$sql .="        , d_status desc ;                              " ;
 
 $result = $conn->query($sql);
 
