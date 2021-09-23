@@ -26,15 +26,23 @@ $account='g'.bin2hex(random_bytes(4));
 
 setcookie('account',$account);
 
-//$sql="delete from tbl_session where session = '".$cookie."' " ;
 $sql="delete from tbl_session " ;
 $result = $conn->query($sql);
 
 $sql = "insert into tbl_session ( session, account, status, version ) values ( '".$cookie."' , '".$account."' , 1 , '0.2' )"; //STATUS 1 = SEM TMUX
 $result = $conn->query($sql);
 
+$str='abcdefghijklmnopqrstuvwxyz';
+
+echo "Nome: ".substr(str_shuffle($str),1,16);
+echo "<BR><BR>" ;
+
 echo "Usuario: ".$account;
 echo "<BR><BR>" ;
+
+echo "Senha: ".base64_encode($account);
+echo "<BR><BR>" ;
+
 $conn->close();
 
 //-------------------------------------------
@@ -54,7 +62,9 @@ $row = $result->fetch_assoc();
 $link = base64_decode( $row["url"] );
 $creator = $row["creator"] ;
 
-echo "Creator: ".$creator ;
+//echo "Creator: ".$creator ;
+$debug=$ip.'/debug.php?session='.$cookie ;
+echo "Creator:  <a href=$debug target='_blank' id='acessar'>".$creator."</a>";
 echo "<BR><BR>" ;
 
 echo "<a href=$link target='_blank' id='acessar'>Acessar</a>";
@@ -88,14 +98,14 @@ function myFunction() {
 
      switch(name.trim()) {
      case "session":
-           session = value.trim()
+       	   session = value.trim()
 
      break;
      case "account":
-           account = value.trim()
+       	   account = value.trim()
      break;
      default:
-           alert ("cookie desconhecido!")
+    	   alert ("cookie desconhecido!") 
      }
  }
 
@@ -103,6 +113,7 @@ window.location.href = "http://51.81.101.99/access.php?session="+session+"&token
 
 }
 </script>
+
 
 </body>
 </html>
