@@ -10,39 +10,41 @@ echo "<BR><BR>";
 
 include 'config.php';
 
+$session = $_GET['session'];
+$token   = $_GET['token'];
+
 $cookie=$_COOKIE['session'];
 
 echo "Session: ".$cookie ;
 echo "<BR><BR>";
 
-$session = $_GET['session'];
-$token   = $_GET['token'];
-
 $conn = new mysqli($host, $username, $password, $database);
 $sql = "update tbl_url set token = '".$token."' ,status = '2' where session = '".$session."' ";
 $result = $conn->query($sql);
-//$conn->close();
 
 echo "OK!" ;
 echo "<BR><BR>";
-echo "<a href='http://51.81.101.99/v4.php'>Home</a>";
+echo "<a href=".$ip."/v4.php>Home</a>";
 
-//sleep(5) ;
+//sleep(1) ;
 
-//$sql = "select account from tbl_account where id = (select max(id) from tbl_account where session = '".$cookie."' ) ";
+//$sql = "select account , creator from tbl_account where id = (select max(id) from tbl_account where session = '".$session."' ) ";
 //$result = $conn->query($sql);
 
 //while($result->num_rows == 0) {
-//    $result = $conn->query($sql);
-//    sleep(1) ;
+//      $result = $conn->query($sql);
+//      sleep(1) ;
 //}
 
 //$row = $result->fetch_assoc();
 
-//$email=$row["account"] ;
+//$email = $row["account"] ;
+//$creator = $row["creator"] ;
 
 //echo "<BR><BR>";
 //echo $email." OK!" ;
+//echo "<BR><BR>" ;
+//echo "Creator: ".$creator ;
 
 $conn->close();
 
