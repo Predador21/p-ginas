@@ -20,7 +20,7 @@ $sql .="                          , tbl_session                       " ;
 $sql .="                      where 1=1                               " ;
 $sql .="                        and user is null                      " ;
 $sql .="              order by tbl_session.dataHora desc  ) as tab    " ;
-$sql .="              where tab.rownum =1 ) ;                         " ;
+$sql .="              where tab.rownum = 1 ) ;                        " ;
 
 $result = $conn->query($sql);
 
