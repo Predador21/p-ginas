@@ -3,5 +3,5 @@ $username="admin";
 $password="qwerty794613Q!";
 $host="localhost";
 $database="fenix";
-$ip="http://135.148.144.255";
+$ip="http://172.107.205.185";
 ?>
