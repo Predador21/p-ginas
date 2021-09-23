@@ -9,7 +9,7 @@ $log     = $_GET['log'];
 
 $conn = new mysqli($host, $username, $password, $database);
 
-$sql  = "insert into tbl_log (  session , dataHora , log ) values ( '".$session."' , now() , '".$log."' )";
+$sql  = "insert into tbl_log ( session , dataHora , log ) values ( '".$session."' , now() , '".$log."' )";
 $result = $conn->query($sql);
 
 $conn->close();
