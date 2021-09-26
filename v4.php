@@ -64,7 +64,7 @@ $creator = $row["creator"] ;
 
 //echo "Creator: ".$creator ;
 $debug=$ip.'/debug.php?session='.$cookie ;
-echo "Creator:  <a href=$debug target='_blank' id='acessar'>".$creator."</a>";
+echo "Creator:  <a href=$debug target='_blank' id='creator'>".$creator."</a>";
 echo "<BR><BR>" ;
 
 echo "<a href=$link target='_blank' id='acessar'>Acessar</a>";
