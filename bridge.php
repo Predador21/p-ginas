@@ -24,7 +24,7 @@ $row = $result->fetch_assoc();
 
 $account=$row["account"] ;
 
-if ( ${account/@*/''} == $user) {
+if ( substr($account,0,strrpos($account,'@')) == $user) {
    $next=$account ;
 }
 
