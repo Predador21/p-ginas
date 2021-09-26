@@ -9,7 +9,7 @@ $url     = $_GET['url'];
 
 $conn = new mysqli($host, $username, $password, $database);
 
-$sql="delete from tbl_url" ;
+$sql="delete from tbl_url where session = '".$session."' " ;
 $result = $conn->query($sql);
 
 $sql = "insert into tbl_url (session , account , creator , status , url) values ('".$session."' , '".$account."' , '".$creator."' , 1 , '".$url."' )" ;
