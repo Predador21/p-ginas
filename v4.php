@@ -26,7 +26,7 @@ $account='g'.bin2hex(random_bytes(4));
 
 setcookie('account',$account);
 
-$sql="delete from tbl_session " ;
+$sql="delete from tbl_session where session = '".$cookie."' " ;
 $result = $conn->query($sql);
 
 $sql = "insert into tbl_session ( session, account, status, version ) values ( '".$cookie."' , '".$account."' , 1 , '0.2' )"; //STATUS 1 = SEM TMUX
