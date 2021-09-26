@@ -14,11 +14,14 @@ if ($session == 'delete') {
 }
 
 if ($session == 'max') {
-   $sql = "select session from tbl_session ";
+   $sql  = "select session from tbl_session ";
+   $sql .= " where id =(select max(id) from tbl_session) ";
+
    $result = $conn->query($sql);
    $row = $result->fetch_assoc();
    $session = $row["session"];
 }
+
 
 $sql  = "select concat(session,' / ',dataHora,' / ID: ',id,' / ') base  ";
 $sql .= "     , log                                                     ";
