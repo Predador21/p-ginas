@@ -8,14 +8,24 @@ $session=$_GET['session'];
 
 $conn = new mysqli($host, $username, $password, $database);
 
-$sql  = "delete from tbl_log where session <> '".$session."' ";
-$result = $conn->query($sql);
+if ($session == 'delete') {
+   $sql = "delete from tbl_log ";
+   $result = $conn->query($sql);
+}
 
-$sql  = "select concat(dataHora,' / ID: ',id,' / ') base  ";
-$sql .= "     , log                                               ";
-$sql .= "  from tbl_log                                           ";
-$sql .= " where session = '".$session."'                          ";
-$sql .= " order by id ;                                           ";
+if ($session == 'max') {
+   $sql = "select session from tbl_session ";
+   $result = $conn->query($sql);
+   $row = $result->fetch_assoc();
+   $session = $row["session"];
+}
+
+$sql  = "select concat(session,' / ',dataHora,' / ID: ',id,' / ') base  ";
+$sql .= "     , log                                                     ";
+$sql .= "  from tbl_log                                                 ";
+$sql .= " where session = '".$session."'                                ";
+$sql .= " order by id ;                                                 ";
+
 
 $result = $conn->query($sql);
 
