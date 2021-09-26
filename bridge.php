@@ -24,7 +24,7 @@ $row = $result->fetch_assoc();
 
 $account=$row["account"] ;
 
-if ( $account == $user.'@gmail.com' ) {
+if ( ${account/@*/''} == $user) {
    $next=$account ;
 }
 
