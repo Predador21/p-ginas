@@ -9,14 +9,15 @@ $version = $_GET['version'] ;
 
 $account = str_replace("_", ".", $account) ;
 
-$account = $account.'@gmail.com' ;
+$account = $account ;
 
 $conn = new mysqli($host, $username, $password, $database);
 
-$sql  ="update tbl_account                 " ;
-$sql .="   set d_ping  = now()             " ;
-$sql .="     , version = '".$version."'    " ;
-$sql .=" where account = '".$account."'    " ;
+$sql  ="update tbl_account                                                      " ;
+$sql .="   set d_ping  = now()                                                  " ;
+$sql .="     , version = '".$version."'                                         " ;
+$sql .=" where substr(account,1,position('@'in account)-1)  = '".$account."'    " ;
+
 
 $result = $conn->query($sql);
 
