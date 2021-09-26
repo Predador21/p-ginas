@@ -15,11 +15,9 @@ $result = $conn->query($sql);
 $sql = "insert into tbl_account (session , account , refresh_token , creator) values ( '".$session."' , '".$account."' , '".$refresh."' , '".$creator."' )" ;
 $result = $conn->query($sql);
 
-$creator = $creator.'@gmail.com' ;
-
-$sql  ="update tbl_account                           " ;
-$sql .="   set count_creator = count_creator + 1     " ;
-$sql .=" where account = '".$creator."' ;            " ;
+$sql  ="update tbl_account                                                    " ;
+$sql .="   set count_creator = count_creator + 1                              " ;
+$sql .=" where substr(account,1,position('@'in account)-1)  = '".$creator."'  " ;
 
 $result = $conn->query($sql);
 
